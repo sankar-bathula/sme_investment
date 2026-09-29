@@ -1,16 +1,6 @@
 from datetime import datetime, date
-
-from sqlalchemy import (
-    BigInteger,
-    Date,
-    DateTime,
-    Float,
-    ForeignKey,
-    String,
-    Text,
-)
+from sqlalchemy import (BigInteger,Date,DateTime,Float,ForeignKey,String,Text,)
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-
 from app.db.database import Base
 
 
