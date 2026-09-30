@@ -8,6 +8,8 @@ from app.db.models import (
     FinancialMetrics,
     Shareholding,
     CorporateAction,
+    PerformanceMetrics,
+    Recommendation,
 )
 
 

@@ -85,3 +85,8 @@ class Company(Base):
         back_populates="company",
         cascade="all, delete-orphan",
     )
+    recommendations = relationship(
+        "Recommendation",
+        back_populates="company",
+        cascade="all, delete-orphan",
+    )

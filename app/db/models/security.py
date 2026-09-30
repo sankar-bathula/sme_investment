@@ -80,3 +80,8 @@ class Security(Base):
         back_populates="security",
         cascade="all, delete-orphan",
     )
+    performance_metrics = relationship(
+        "PerformanceMetrics",
+        back_populates="security",
+        cascade="all, delete-orphan",
+    )
