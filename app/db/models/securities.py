@@ -75,11 +75,18 @@ class Security(Base):
         cascade="all, delete-orphan",
     )
 
+    financial_metrics = relationship(
+        "FinancialMetrics",
+        back_populates="security",
+        cascade="all, delete-orphan",
+    )
+
     corporate_actions = relationship(
         "CorporateAction",
         back_populates="security",
         cascade="all, delete-orphan",
     )
+
     performance_metrics = relationship(
         "PerformanceMetrics",
         back_populates="security",

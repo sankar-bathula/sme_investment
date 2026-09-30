@@ -14,7 +14,7 @@ from app.db.database import Base
 
 
 class Shareholding(Base):
-    __tablename__ = "shareholding"
+    __tablename__ = "shareholdings"
 
     shareholding_id: Mapped[int] = mapped_column(
         BigInteger,
@@ -77,6 +77,6 @@ class Shareholding(Base):
         UniqueConstraint(
             "company_id",
             "period_date",
-            name="uq_shareholding_company_period",
+            name="uq_shareholdings_company_period",
         ),
     )

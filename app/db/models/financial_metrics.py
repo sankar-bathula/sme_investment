@@ -23,9 +23,9 @@ class FinancialMetrics(Base):
         autoincrement=True,
     )
 
-    company_id: Mapped[int] = mapped_column(
+    security_id: Mapped[int] = mapped_column(
         BigInteger,
-        ForeignKey("companies.company_id"),
+        ForeignKey("securities.security_id"),
         nullable=False,
         index=True,
     )
@@ -39,7 +39,7 @@ class FinancialMetrics(Base):
     period_type: Mapped[str] = mapped_column(
         String(20),
         nullable=False,
-        default="FY",
+        default="SNAPSHOT",
     )
 
     revenue: Mapped[float | None] = mapped_column(
@@ -105,16 +105,16 @@ class FinancialMetrics(Base):
         nullable=False,
     )
 
-    company = relationship(
-        "Company",
+    security = relationship(
+        "Security",
         back_populates="financial_metrics",
     )
 
     __table_args__ = (
         UniqueConstraint(
-            "company_id",
+            "security_id",
             "financial_year",
             "period_type",
-            name="uq_financial_company_period",
+            name="uq_financial_security_period",
         ),
     )

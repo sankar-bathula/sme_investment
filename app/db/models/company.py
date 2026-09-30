@@ -15,7 +15,6 @@ class Company(Base):
         autoincrement=True,
     )
 
-    # Company identification
     name: Mapped[str] = mapped_column(
         String(500),
         nullable=False,
@@ -26,7 +25,6 @@ class Company(Base):
         nullable=True,
     )
 
-    # Business classification
     industry: Mapped[str | None] = mapped_column(
         String(200),
         nullable=True,
@@ -47,7 +45,6 @@ class Company(Base):
         nullable=True,
     )
 
-    # Audit fields
     created_at: Mapped[datetime] = mapped_column(
         DateTime,
         default=datetime.utcnow,
@@ -61,15 +58,8 @@ class Company(Base):
         nullable=False,
     )
 
-    # Relationships
     securities = relationship(
         "Security",
-        back_populates="company",
-        cascade="all, delete-orphan",
-    )
-
-    financial_metrics = relationship(
-        "FinancialMetrics",
         back_populates="company",
         cascade="all, delete-orphan",
     )
@@ -85,6 +75,7 @@ class Company(Base):
         back_populates="company",
         cascade="all, delete-orphan",
     )
+
     recommendations = relationship(
         "Recommendation",
         back_populates="company",

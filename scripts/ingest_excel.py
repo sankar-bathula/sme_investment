@@ -35,8 +35,11 @@ def main():
     excel_files = sorted(
         file
         for file in input_folder.iterdir()
-        if file.is_file()
-        and file.suffix.lower() in SUPPORTED_EXTENSIONS
+        if (
+            file.is_file()
+            and file.suffix.lower() in SUPPORTED_EXTENSIONS
+            and not file.name.startswith("~$")
+        )
     )
 
     if not excel_files:
