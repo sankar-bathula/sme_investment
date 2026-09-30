@@ -1,0 +1,37 @@
+from app.db.database import SessionLocal
+from app.screener.stock_screener import StockScreener
+
+
+def main():
+    db = SessionLocal()
+
+    try:
+        screener = StockScreener(db)
+
+        stocks = screener.screen(
+            max_market_cap=5000,
+            min_promoter_holding=35,
+            min_net_profit_margin=5,
+            max_debt_equity=1,
+            min_dividend_yield=0,
+        )
+
+        print(f"\nQualified stocks: {len(stocks)}\n")
+
+        for stock in stocks:
+            print(
+                f"{stock['code']:10} "
+                f"{stock['script_name'][:30]:30} "
+                f"Price={stock['price']} "
+                f"PE={stock['pe']} "
+                f"Promoter={stock['promoter_holding']}% "
+                f"NPM={stock['net_profit_margin']}% "
+                f"D/E={stock['debt_equity']}"
+            )
+
+    finally:
+        db.close()
+
+
+if __name__ == "__main__":
+    main()
