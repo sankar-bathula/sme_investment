@@ -1,7 +1,5 @@
 # from app.db.database import SessionLocal
 # from app.screener.stock_screener import StockScreener
-
-
 # def main():
 #     db = SessionLocal()
 
@@ -32,14 +30,11 @@
 
 #     except Exception as e:
 #         print(f"Error occurred: {e}")
-
 #     finally:
 #         db.close()
 
-
 # if __name__ == "__main__":
 #     main()
-
 
 
 from app.db.database import SessionLocal
@@ -56,10 +51,10 @@ def main():
             max_market_cap=5000,
             max_pe=20,
             min_eps=0,
-            # min_promoter_holding=35,
-            # min_net_profit_margin=5,
-            # max_debt_equity=1,
-            # min_dividend_yield=0,
+            min_promoter_holding=35,
+            min_net_profit_margin=5,
+            max_debt_equity=1,
+            min_dividend_yield=0,
         )
 
         # Sort by fundamentals
